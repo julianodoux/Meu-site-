@@ -37,16 +37,16 @@
       font-size: 14px;
       margin-bottom: 30px;
     }
-  input[type="text"] {
-  width: 80%;
-  padding: 15px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 16px;
-  margin-bottom: 20px;
-  background-color: #f5f5f5;
-  color: #000;
-}
+    input[type="text"] {
+      width: 80%;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+      margin-bottom: 20px;
+      background-color: #f5f5f5;
+      color: #000;
+    }
     .btn-acessar {
       width: 80%;
       padding: 15px;
@@ -77,12 +77,13 @@
       font-weight: bold;
       font-size: 16px;
       margin-top: 20px;
+      color: green;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <img src="logo_sem_fundo.PNG" alt="Logo TV ON+" class="logo" />
+    <img src="logo_sem_fundo.png" alt="Logo TV ON+" class="logo" />
     <h2>Renovar Assinatura</h2>
     <p>Digite seu telefone para continuar</p>
     <input type="text" id="telefone" placeholder="Telefone" />
@@ -118,7 +119,7 @@
       if (dados[telefone]) {
         const [nome, link] = dados[telefone];
         resultado.innerHTML = `
-          <div class="nome-usuario">${nome}</div>
+          <div class="nome-usuario">Olá, ${nome}!</div>
           <a class="btn-renovar" href="${link}" target="_blank">Clique para renovar</a>
         `;
       } else {
