@@ -1,31 +1,128 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-  <title>Gerador de Link por Telefone</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Renovar Assinatura</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom right, #002c46, #01263a);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background-color: white;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 400px;
+      padding: 40px 20px;
+      text-align: center;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      color: #000;
+    }
+    .logo {
+      max-width: 120px;
+      margin-bottom: 20px;
+    }
+    h2 {
+      margin-bottom: 10px;
+      font-size: 24px;
+    }
+    p {
+      color: #555;
+      font-size: 14px;
+      margin-bottom: 30px;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+      margin-bottom: 20px;
+      background-color: #f5f5f5;
+      color: #000;
+    }
+    .btn-acessar {
+      width: 100%;
+      padding: 15px;
+      background-color: #000;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+    }
+    .btn-renovar {
+      width: 100%;
+      padding: 15px;
+      background-color: #00796b;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 30px;
+      margin-top: 20px;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .mensagem-erro {
+      color: red;
+      margin-top: 20px;
+    }
+    .nome-usuario {
+      font-weight: bold;
+      font-size: 16px;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
-  <h2>Digite seu telefone:</h2>
-  <input type="text" id="telefone" placeholder="Digite o telefone">
-  <button onclick="mostrarLink()">Ver link</button>
-
-  <p id="resultado"></p>
+  <div class="container">
+    <img src="logo_sem_fundo.png" alt="Logo TV ON+" class="logo" />
+    <h2>Renovar assinatura</h2>
+    <p>Digite seu telefone para continuar</p>
+    <input type="text" id="telefone" placeholder="Telefone" />
+    <button class="btn-acessar" onclick="mostrarLink()">Acessar</button>
+    <div id="resultado"></div>
+  </div>
 
   <script>
+    const dados = {
+      "12988473131": ["Marcos Vinícius", "https://bruxplay.sigma.st/#/checkout/231qAP214q/RXDgKVKoDe"],
+      "12997455589": ["Alexia Fernandes de Carvalho", "https://bruxplay.sigma.st/#/checkout/231qAP214q/ywDmKx0J1p"],
+      "12981769137": ["Pedro Alvarenga", "https://bruxplay.sigma.st/#/checkout/231qAP214q/V4D3kee5Da"],
+      "12997207221": ["Cibel Macedo", "https://bruxplay.sigma.st/#/checkout/231qAP214q/yb1BznxG1P"],
+      "11983453953": ["Letícia", "https://bruxplay.sigma.st/#/checkout/231qAP214q/mVLl9PV7DQ"],
+      "12992547287": ["Fernando Henrique", "https://bruxplay.sigma.st/#/checkout/231qAP214q/pKDa4MvrLR"],
+      "11967230333": ["Frank", "https://bruxplay.sigma.st/#/checkout/231qAP214q/r6LJ8nGbWv"],
+      "12981241678": ["Douglas Campos", "https://bruxplay.sigma.st/#/checkout/231qAP214q/r6LJ8RxOWv"],
+      "12981899366": ["Suelen Cristine", "https://bruxplay.sigma.st/#/checkout/231qAP214q/r6LJ8J7nWv"],
+      "11998147079": ["Rita de Cássia", "https://bruxplay.sigma.st/#/checkout/231qAP214q/V4D3kaA9Da"],
+      "11945045029": ["Elder", "https://bruxplay.sigma.st/#/checkout/231qAP214q/V4D3ka3pDa"],
+      "12981928439": ["Cassiano", "https://bruxplay.sigma.st/#/checkout/231qAP214q/241Kz54KWm"],
+      "11969751469": ["Marlon", "https://bruxplay.sigma.st/#/checkout/231qAP214q/8K1xJBRKDv"],
+      "11944270681": ["Mavillin Rossini de Souza", "https://bruxplay.sigma.st/#/checkout/231qAP214q/4vLbJjp7Lg"],
+      "12992424638": ["Moisés", "https://bruxplay.sigma.st/#/checkout/231qAP214q/pKDar5X0WR"],
+      "12992183613": ["Jorge", "https://bruxplay.sigma.st/#/checkout/231qAP214q/OxLA7EbpWZ"],
+      "12997067451": ["Jéssica Aparecida Valeriano", "https://bruxplay.sigma.st/#/checkout/231qAP214q/4vLbE0zN1g"]
+    };
+
     function mostrarLink() {
-      const telefone = document.getElementById("telefone").value;
+      const telefone = document.getElementById("telefone").value.trim();
       const resultado = document.getElementById("resultado");
 
-      // Substitua pelos números e links desejados
-      const links = {
-        "12996437435": "https://link1.com",
-        "11999999999": "https://link2.com",
-        "21988888888": "https://link3.com"
-      };
-
-      if (links[telefone]) {
-        resultado.innerHTML = `<a href="${links[telefone]}" target="_blank">Clique aqui para acessar</a>`;
+      if (dados[telefone]) {
+        const [nome, link] = dados[telefone];
+        resultado.innerHTML = `
+          <div class="nome-usuario">${nome}</div>
+          <a class="btn-renovar" href="${link}" target="_blank">Clique para renovar</a>
+        `;
       } else {
-        resultado.innerHTML = "Telefone não encontrado.";
+        resultado.innerHTML = '<p class="mensagem-erro">Telefone não encontrado.</p>';
       }
     }
   </script>
