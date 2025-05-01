@@ -91,27 +91,28 @@
     <div id="resultado"></div>
   </div>
 
-  <script>
-    const dados = {
-      "12988473131": ["Marcos Vinícius", "https://bruxplay.sigma.st/#/checkout/231qAP214q/RXDgKVKoDe"],
-      "12997455589": ["Alexia Fernandes de Carvalho", "https://bruxplay.sigma.st/#/checkout/231qAP214q/ywDmKx0J1p"],
-      "12981769137": ["Pedro Alvarenga", "https://bruxplay.sigma.st/#/checkout/231qAP214q/V4D3kee5Da"],
-      "12997207221": ["Cibel Macedo", "https://bruxplay.sigma.st/#/checkout/231qAP214q/yb1BznxG1P"],
-      "11983453953": ["Letícia", "https://bruxplay.sigma.st/#/checkout/231qAP214q/mVLl9PV7DQ"],
-      "12992547287": ["Fernando Henrique", "https://bruxplay.sigma.st/#/checkout/231qAP214q/pKDa4MvrLR"],
-      "11967230333": ["Frank", "https://bruxplay.sigma.st/#/checkout/231qAP214q/r6LJ8nGbWv"],
-      "12981241678": ["Douglas Campos", "https://bruxplay.sigma.st/#/checkout/231qAP214q/r6LJ8RxOWv"],
-      "12981899366": ["Suelen Cristine", "https://bruxplay.sigma.st/#/checkout/231qAP214q/r6LJ8J7nWv"],
-      "11998147079": ["Rita de Cássia", "https://bruxplay.sigma.st/#/checkout/231qAP214q/V4D3kaA9Da"],
-      "11945045029": ["Elder", "https://bruxplay.sigma.st/#/checkout/231qAP214q/V4D3ka3pDa"],
-      "12981928439": ["Cassiano", "https://bruxplay.sigma.st/#/checkout/231qAP214q/241Kz54KWm"],
-      "11969751469": ["Marlon", "https://bruxplay.sigma.st/#/checkout/231qAP214q/8K1xJBRKDv"],
-      "11944270681": ["Mavillin Rossini de Souza", "https://bruxplay.sigma.st/#/checkout/231qAP214q/4vLbJjp7Lg"],
-      "12992424638": ["Moisés", "https://bruxplay.sigma.st/#/checkout/231qAP214q/pKDar5X0WR"],
-      "12992183613": ["Jorge", "https://bruxplay.sigma.st/#/checkout/231qAP214q/OxLA7EbpWZ"],
-      "12997067451": ["Jéssica Aparecida Valeriano", "https://bruxplay.sigma.st/#/checkout/231qAP214q/4vLbE0zN1g"]
-    };
-
+ <script>
+  const dados = {
+    "12988473131": ["Marcos Vinícius", "https://bruxplay.sigma.st/#/checkout/231qAP214q/RXDgKVKoDe"],
+    "12997455589": ["Alexia Fernandes de Carvalho", "https://bruxplay.sigma.st/#/checkout/231qAP214q/ywDmKx0J1p"],
+    "12981769137": ["Pedro Alvarenga", "https://bruxplay.sigma.st/#/checkout/231qAP214q/V4D3kee5Da"],
+    "12997207221": ["Cibel Macedo", "https://bruxplay.sigma.st/#/checkout/231qAP214q/yb1BznxG1P"],
+    "11983453953": ["Letícia", "https://bruxplay.sigma.st/#/checkout/231qAP214q/mVLl9PV7DQ"],
+    "12992547287": ["Fernando Henrique", "https://bruxplay.sigma.st/#/checkout/231qAP214q/pKDa4MvrLR"],
+    "11967230333": ["Frank", "https://bruxplay.sigma.st/#/checkout/231qAP214q/r6LJ8nGbWv"],
+    "12981241678": ["Douglas Campos", "https://bruxplay.sigma.st/#/checkout/231qAP214q/r6LJ8RxOWv"],
+    "12981899366": ["Suelen Cristine", "https://bruxplay.sigma.st/#/checkout/231qAP214q/r6LJ8J7nWv"],
+    "11998147079": ["Rita de Cássia", "https://bruxplay.sigma.st/#/checkout/231qAP214q/V4D3kaA9Da"],
+    "11945045029": ["Elder", "https://bruxplay.sigma.st/#/checkout/231qAP214q/V4D3ka3pDa"],
+    "12981928439": ["Cassiano", "https://bruxplay.sigma.st/#/checkout/231qAP214q/241Kz54KWm"],
+    "11969751469": ["Marlon", "https://bruxplay.sigma.st/#/checkout/231qAP214q/8K1xJBRKDv"],
+    "11944270681": ["Mavillin Rossini de Souza", "https://bruxplay.sigma.st/#/checkout/231qAP214q/4vLbJjp7Lg"],
+    "12992424638": ["Moisés", "https://bruxplay.sigma.st/#/checkout/231qAP214q/pKDar5X0WR"],
+    "12992183613": ["Jorge", "https://bruxplay.sigma.st/#/checkout/231qAP214q/OxLA7EbpWZ"],
+    "12997067451": ["Jéssica Aparecida Valeriano", "https://bruxplay.sigma.st/#/checkout/231qAP214q/4vLbE0zN1g"],
+    "12981430040": ["Larissa Lima", "https://bruxplay.sigma.st/#/checkout/231qAP214q/241KzJY8Wm"]
+  };
+</script>
     function mostrarLink() {
       const telefone = document.getElementById("telefone").value.trim();
       const resultado = document.getElementById("resultado");
