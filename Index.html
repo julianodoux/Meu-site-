@@ -86,8 +86,11 @@
     <img src="logo_sem_fundo.png" alt="Logo TV ON+" class="logo" />
     <h2>Renovar Assinatura</h2>
     <p>Digite seu telefone para continuar</p>
+
+    <label for="telefone" style="display:none;">Número de telefone</label>
     <input type="text" id="telefone" placeholder="(00)00000-0000" maxlength="15" oninput="mascaraTelefone(this)" />
-    <button class="btn-acessar" onclick="mostrarLink()">Acessar</button>
+    <button class="btn-acessar" id="botaoAcessar" onclick="mostrarLink()" disabled>Acessar</button>
+    
     <div id="resultado"></div>
   </div>
 
@@ -115,6 +118,11 @@
       "11971883998": ["Ricardo", "https://bruxplay.top/#/checkout/231qAP214q/xl1jl52GDM"]
     };
 
+    document.getElementById("telefone").addEventListener("input", function () {
+      const valor = this.value.replace(/\D/g, '');
+      document.getElementById("botaoAcessar").disabled = valor.length < 10;
+    });
+
     function mascaraTelefone(input) {
       let valor = input.value.replace(/\D/g, '');
       if (valor.length > 10) {
@@ -128,6 +136,11 @@
     function mostrarLink() {
       const telefone = document.getElementById("telefone").value.replace(/\D/g, '').trim();
       const resultado = document.getElementById("resultado");
+
+      if (!telefone || telefone.length < 10) {
+        resultado.innerHTML = '<p class="mensagem-erro">Por favor, insira um telefone válido.</p>';
+        return;
+      }
 
       if (dados[telefone]) {
         const [nome, link] = dados[telefone];
