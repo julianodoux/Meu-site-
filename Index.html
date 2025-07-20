@@ -57,6 +57,10 @@
       border-radius: 50px;
       cursor: pointer;
     }
+    .btn-acessar:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
     .btn-renovar {
       width: 80%;
       padding: 15px;
@@ -78,6 +82,26 @@
       font-size: 16px;
       margin-top: 20px;
       color: green;
+    }
+    .botoes-loja {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+    .botoes-loja a img {
+      height: 45px;
+      border-radius: 10px;
+      transition: transform 0.2s ease;
+    }
+    .botoes-loja a img:hover {
+      transform: scale(1.05);
+    }
+    .texto-ajuda {
+      margin-top: 30px;
+      font-size: 14px;
+      color: #333;
     }
   </style>
 </head>
@@ -137,8 +161,20 @@
       const telefone = document.getElementById("telefone").value.replace(/\D/g, '').trim();
       const resultado = document.getElementById("resultado");
 
+      const botoesDownload = `
+        <div class="texto-ajuda">Se você não conseguir acessar o link, baixe o app 1.1.1.1 para melhorar sua conexão:</div>
+        <div class="botoes-loja">
+          <a href="https://apps.apple.com/us/app/1-1-1-1-faster-internet/id1423538627" target="_blank">
+            <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Baixar na App Store">
+          </a>
+          <a href="https://play.google.com/store/apps/details?id=com.cloudflare.onedotonedotonedotone&hl=pt_BR&pli=1" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Baixar no Google Play">
+          </a>
+        </div>
+      `;
+
       if (!telefone || telefone.length < 10) {
-        resultado.innerHTML = '<p class="mensagem-erro">Por favor, insira um telefone válido.</p>';
+        resultado.innerHTML = '<p class="mensagem-erro">Por favor, insira um telefone válido.</p>' + botoesDownload;
         return;
       }
 
@@ -147,9 +183,10 @@
         resultado.innerHTML = `
           <div class="nome-usuario">Olá, ${nome}!</div>
           <a class="btn-renovar" href="${link}" target="_blank">Clique para renovar</a>
+          ${botoesDownload}
         `;
       } else {
-        resultado.innerHTML = '<p class="mensagem-erro">Telefone não encontrado.</p>';
+        resultado.innerHTML = '<p class="mensagem-erro">Telefone não encontrado.</p>' + botoesDownload;
       }
     }
   </script>
