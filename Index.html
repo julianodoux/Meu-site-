@@ -1,206 +1,154 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head> 
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Renovar Assinatura</title>
+  <title>Gerador de Links IPTV</title>
   <style>
     body {
-      margin: 0;
       font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      position: relative;
-      overflow: hidden;
+      margin: 30px;
+      background: #f9f9f9;
     }
-
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('https://i.ytimg.com/vi/P2PpRavXAos/maxresdefault.jpg') no-repeat center center fixed;
-      background-size: cover;
-      z-index: -2;
-    }
-
-    body::after {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.6);
-      z-index: -1;
-    }
-
-    .container {
-      background-color: white;
-      border-radius: 20px;
-      width: 90%;
-      max-width: 400px;
-      padding: 40px 20px;
-      text-align: center;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-      color: #000;
-    }
-    .logo {
-      max-width: 120px;
-      margin-bottom: 20px;
-    }
-    h2 {
-      margin-bottom: 10px;
-      font-size: 24px;
-    }
-    p {
-      color: #555;
-      font-size: 14px;
-      margin-bottom: 30px;
+    label {
+      display: inline-block;
+      width: 120px;
     }
     input[type="text"] {
-      width: 80%;
-      padding: 15px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 16px;
-      margin-bottom: 20px;
-      background-color: #f5f5f5;
-      color: #000;
-    }
-    .btn-acessar {
-      width: 80%;
-      padding: 15px;
-      background-color: #000;
-      color: white;
-      font-size: 16px;
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-    }
-    .btn-acessar:disabled {
-      background-color: #ccc;
-      cursor: not-allowed;
-    }
-    .btn-renovar {
-      width: 80%;
-      padding: 15px;
-      background-color: #00796b;
-      color: white;
-      font-size: 16px;
-      border: none;
-      border-radius: 30px;
-      margin-top: 20px;
-      text-decoration: none;
-      display: inline-block;
-    }
-    .mensagem-erro {
-      color: red;
-      margin-top: 20px;
-    }
-    .nome-usuario {
-      font-weight: bold;
-      font-size: 16px;
-      margin-top: 20px;
-      color: green;
-    }
-    .botoes-loja {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 20px;
-    }
-    .botoes-loja a img {
-      height: 45px;
-      border-radius: 10px;
-      transition: transform 0.2s ease;
-    }
-    .botoes-loja a img:hover {
-      transform: scale(1.05);
-    }
-    .texto-ajuda {
-      margin-top: 30px;
+      padding: 5px;
       font-size: 14px;
+      margin-bottom: 10px;
+      width: 250px;
+    }
+    button {
+      padding: 6px 12px;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+    .link {
+      margin-bottom: 10px;
+      padding: 10px;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    .link strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+    .link-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .link-content a {
+      flex: 1;
+      word-break: break-all;
+      text-decoration: none;
       color: #333;
+      font-size: 13px;
+      margin-right: 10px;
+    }
+    .copy-btn {
+      padding: 2px 8px;
+      font-size: 12px;
+      cursor: pointer;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 3px;
+    }
+    .copy-btn:hover {
+      background-color: #0056b3;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <img src="logo_sem_fundo.png" alt="Logo TV ON+" class="logo" />
-    <h2>Renovar Assinatura</h2>
-    <p>Digite seu telefone para continuar</p>
 
-    <label for="telefone" style="display:none;">Número de telefone</label>
-    <input type="text" id="telefone" placeholder="(00)00000-0000" maxlength="15" oninput="mascaraTelefone(this)" />
-    <button class="btn-acessar" id="botaoAcessar" onclick="mostrarLink()" disabled>Acessar</button>
-    
-    <div id="resultado"></div>
+  <h2>Gerador de Links IPTV</h2>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 20px;">
+    <div>
+      <label for="username">Username:</label>
+      <input type="text" id="username" placeholder="Ex: 21648534" />
+    </div>
+
+    <div>
+      <label for="link">OU cole um link M3U:</label>
+      <input type="text" id="link" placeholder="Cole aqui um link completo..." />
+    </div>
   </div>
 
+  <div style="display: flex; flex-wrap: wrap; gap: 20px;">
+    <div>
+      <label for="password">Password:</label>
+      <input type="text" id="password" placeholder="Ex: 91347536" />
+    </div>
+
+    <div>
+      <button onclick="gerarLinks()">Gerar Links</button>
+    </div>
+  </div>
+
+  <h3>Links Gerados:</h3>
+  <div id="resultado"></div>
+
   <script>
-    let dados = {};
+    const servidores = {
+      "Galaxy": "http://cdn.netplaygalaxy.shop:80",
+      "Solar": "http://nplaysolar.shop",
+      "Sky": "http://facilita.fun:80",
+      "Lunar": "http://fgut.shop",
+      "Seven": "http://cdn.v766.site:80"
+    };
 
-    // Carrega os dados do arquivo externo
-    fetch('dados.json')
-      .then(response => response.json())
-      .then(json => dados = json)
-      .catch(error => console.error('Erro ao carregar dados:', error));
+    function gerarLinks() {
+      let username = document.getElementById("username").value.trim();
+      let password = document.getElementById("password").value.trim();
+      const link = document.getElementById("link").value.trim();
 
-    // Ativa/desativa botão com base no telefone digitado
-    document.getElementById("telefone").addEventListener("input", function () {
-      const valor = this.value.replace(/\D/g, '');
-      document.getElementById("botaoAcessar").disabled = valor.length < 10;
-    });
-
-    // Máscara de telefone
-    function mascaraTelefone(input) {
-      let valor = input.value.replace(/\D/g, '');
-      if (valor.length > 10) {
-        valor = valor.replace(/(\d{2})(\d{5})(\d{4})/, '($1)$2-$3');
-      } else {
-        valor = valor.replace(/(\d{2})(\d{4})(\d{4})/, '($1)$2-$3');
+      if (link && (!username || !password)) {
+        const matchUser = link.match(/username=([^&]+)/);
+        const matchPass = link.match(/password=([^&]+)/);
+        if (matchUser) username = matchUser[1];
+        if (matchPass) password = matchPass[1];
       }
-      input.value = valor;
-    }
 
-    function mostrarLink() {
-      const telefone = document.getElementById("telefone").value.replace(/\D/g, '').trim();
       const resultado = document.getElementById("resultado");
+      resultado.innerHTML = "";
 
-      const botoesDownload = `
-        <div class="texto-ajuda">Se você não conseguir acessar o link, baixe o app 1.1.1.1 para melhorar sua conexão:</div>
-        <div class="botoes-loja">
-          <a href="https://apps.apple.com/us/app/1-1-1-1-faster-internet/id1423538627" target="_blank">
-            <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Baixar na App Store">
-          </a>
-          <a href="https://play.google.com/store/apps/details?id=com.cloudflare.onedotonedotonedotone&hl=pt_BR&pli=1" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Baixar no Google Play">
-          </a>
-        </div>
-      `;
-
-      if (!telefone || telefone.length < 10) {
-        resultado.innerHTML = '<p class="mensagem-erro">Por favor, insira um telefone válido.</p>' + botoesDownload;
+      if (!username || !password) {
+        resultado.innerHTML = "<p style='color:red;'>Informe username e password ou cole um link válido.</p>";
         return;
       }
 
-      if (dados[telefone]) {
-        const [nome, link] = dados[telefone];
-        resultado.innerHTML = `
-          <div class="nome-usuario">Olá, ${nome}!</div>
-          <a class="btn-renovar" href="${link}" target="_blank">Clique para renovar</a>
-          ${botoesDownload}
+      for (const nome in servidores) {
+        const url = `${servidores[nome]}/get.php?username=${username}&password=${password}&type=m3u_plus&output=mpegts`;
+        const id = `link_${nome}`;
+        const linkHTML = `
+          <div class="link">
+            <strong>${nome}:</strong>
+            <div class="link-content">
+              <a href="${url}" target="_blank" id="${id}">${url}</a>
+              <button class="copy-btn" onclick="copiarLink('${id}')">Copiar</button>
+            </div>
+          </div>
         `;
-      } else {
-        resultado.innerHTML = '<p class="mensagem-erro">Telefone não encontrado.</p>' + botoesDownload;
+        resultado.innerHTML += linkHTML;
       }
     }
+
+    function copiarLink(id) {
+      const link = document.getElementById(id).textContent;
+      navigator.clipboard.writeText(link).then(() => {
+        console.log("Copiado!");
+      }).catch(err => {
+        alert("Erro ao copiar link: " + err);
+      });
+    }
   </script>
+
 </body>
 </html>
